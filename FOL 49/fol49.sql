@@ -1,19 +1,21 @@
 --creation des table
 
-DROP TABLE IF EXIST SALARIE;
+
 CREATE TABLE SALARIE(
-	NUM_SECU int(14) NOT NULL PRIMARY KEY,
+	NUM_SECU varchar(14) NOT NULL PRIMARY KEY,
 	NOM varchar(30),
 	PRENOM varchar(30),
 	DAT_NAISS DATE,
-	LIEU_NAIS varchar(30),
+	LIEU_NAISS varchar(30),
+	situation_familiale varchar(100),
 	ADRESSE varchar(30),
+	VILLE varchar(30),
 	TELEPHONE varchar(10),
 	MAIL varchar(100)
 )ENGINE=INNODB;
 
 CREATE TABLE ENFANT (
-	PARENT int(14),
+	PARENT varchar(14),
 	NOM varchar(30),
 	PRENOM varchar(30),
 	DAT_NAISS DATE,

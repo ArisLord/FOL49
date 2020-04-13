@@ -19,16 +19,16 @@
   </div>
   
   <div class="panel-body">
-   <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+   <form action="./traitement.php" method="POST">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="form-group">
-                    <input type="text" name="Nom" id="Nom" class="form-control" placeholder="Nom" tabindex="1">
+                    <input type="text" name="Nom" id="Nom" class="form-control" placeholder="Nom" tabindex="1" required="required">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="Prenom" id="Prenom" class="form-control" placeholder="Prenom" tabindex="1">
+                        <input type="text" name="Prenom" id="Prenom" class="form-control" placeholder="Prenom" tabindex="1" required="required">
                     </div>
                 </div>
         </div>
@@ -42,26 +42,26 @@
         <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                    <div class="form-group">
-                        <input type="date" name="date_naiss" id="date_naiss" class="form-control " placeholder="Date de Naissance " tabindex="4">
+                        <input type="date" name="date_naiss" id="date_naiss" class="form-control " placeholder="Date de Naissance " tabindex="4" required="required">
                      </div>  
                 </div>
                 
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="lieu_naiss" id="lieu_naiss" class="form-control " placeholder="Lieu de Naissance " tabindex="4">
+                        <input type="text" name="lieu_naiss" id="lieu_naiss" class="form-control " placeholder="Lieu de Naissance " tabindex="4" required="required">
                      </div>
                 </div>
             </div>   
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="telephone" id="telephone" class="form-control " placeholder="Téléphone" tabindex="4">
+                        <input type="text" name="telephone" id="telephone" class="form-control " placeholder="Téléphone" tabindex="4" required="required" maxlength="10">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <div class="form-group">
-                            <input type="text" name="email" id="email" class="form-control " placeholder="Adresse Mail" tabindex="4">
+                            <input type="text" name="email" id="email" class="form-control " placeholder="Adresse Mail" tabindex="4" required="required">
                         </div>
                     </div>
                 </div>
@@ -69,13 +69,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="form-group">
-                <input type="text" name="adresse" id="adresse" class="form-control " placeholder="Adresse" tabindex="3">
+                <input type="text" name="adresse" id="adresse" class="form-control " placeholder="Adresse" tabindex="3" required="required">
             </div>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
                         <div class="form-group">
-                            <input type="text" name="ville" id="ville" class="form-control " placeholder="Ville" tabindex="3">
+                            <input type="text" name="ville" id="ville" class="form-control " placeholder="Ville" tabindex="3" required="required">
                         </div>
                     </div>
                 </div>
@@ -83,24 +83,59 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-4">
                     <div class="form-group">
-                        <input type="text" name="num_secu" id="num_secu" class="form-control " placeholder="N° Sécurité sociale " tabindex="4">                    
+                        <input type="text" name="num_secu" id="num_secu" class="form-control " placeholder="N° Sécurité sociale " tabindex="4" required="required" maxlength="14">                    
                     </div>
                 </div>
             </div>
-            
+             <div class="row">
+                    <div class="form-group">
+                        <label>Situation familiale :</label><br/>
+                        <table>
+                            <tr>
+                                <td><label>Célibaitre</label></td><td><input type="radio" value="Célibaitre" name="Situation_familiale"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Marié.e</label></td><td><input type="radio" value="Marié" name="Situation_familiale"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Vie Maritale</label></td><td><input type="radio" value="
+                                    Vie Maritale" name="Situation_familiale"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Autre</label></td><td><input id="autre" type="radio" value="Autre"  name="Situation_familiale">
+                                <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <div id="precise" class="form-group">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <div class="input-group">
+                                    <div class="checkbox" style="margin-top: 0px;">
+                                        <td><label>Enfant</label></td><td><input id="check_kid" type="checkbox" name="check_kid"></td>
+                                     </div>
+                              </div>  
+
+
+                            </tr>
+                        </table>
+                         
+                         
+                        
+                                   
+                    </div>
+
+            </div>
 
                               
-            <div class="input-group">
-                <div class="checkbox" style="margin-top: 0px;">
-                    <label>
-                        <label>ENFANT</label><input id="check_kid" type="checkbox" name="check_kid">
-                    </label>
-                </div>
-            </div>
+            
              <div id="enfant" class="row">
               
             </div>                       
-            <button type="submit" class="btn btn-success">J'enregistre</button>
+            <input type="submit" name="submit" value="Suivant" class="btn btn-success" />
   
              <hr style="margin-top:10px;margin-bottom:10px;" >
   
@@ -120,3 +155,4 @@
 
 </body>
 </html>
+

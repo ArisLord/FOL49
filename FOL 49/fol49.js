@@ -55,17 +55,58 @@ function addline() {
 	var label_name = ["nom_enfant[]","prenom_enfant[]","date_naiss_enfant[]","sexe_enfant[]","a_charge[]"];
 	for (var i = 0; i <= 5; i++) {
 		
-		if (i!=5){
-			var input = document.createElement("input");
-			input.name=label_name[i];
-			input.type="text";
-			input.style="border : 1px solid white;";
+		if (i<4){
+			if(i==2){
+				var input = document.createElement("input");
+				input.name=label_name[i];
+				input.required="required";
+				input.type="date";
+				input.style="border : 1px solid white;";
+			}
+			else if (i==3){
+				var input = document.createElement("select");
+				input.name=label_name[i];
+				input.required="required";
+				var opt1 = document.createElement("option");
+				var opt2 = document.createElement("option");
+				opt1.innerHTML="F";
+				opt2.innerHTML="M";
+				input.appendChild(opt1);
+				input.appendChild(opt2);
+				input.style="border : 1px solid white;";
+			}
 
+			else{
+				var input = document.createElement("input");
+				input.name=label_name[i];
+				input.required="required";
+				input.type="text";
+				input.style="border : 1px solid white;";
+			}
 			var td = document.createElement("td");
 			td.appendChild(input);
 			tr.appendChild(td);
 		}
-		else {
+		else if (i==4){
+
+			var input = document.createElement("select");
+			input.name=label_name[4];
+			var opt1=document.createElement("option");
+			var opt2=document.createElement("option");
+			opt1.innerHTML="OUI";
+			opt2.innerHTML="NON";
+
+			input.appendChild(opt1);
+			input.appendChild(opt2);
+			
+			input.style="border : 1px solid white; background-color:white;";
+			
+			var td = document.createElement("td");
+			td.appendChild(input);
+			tr.appendChild(td);
+			console.log(tr);
+		}
+		else if (i==5) {
 			var input=document.createElement('button');
 			var td = document.createElement("td");
 			input.className ="moins";

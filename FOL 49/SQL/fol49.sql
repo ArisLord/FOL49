@@ -14,13 +14,16 @@ CREATE TABLE SALARIE(
 	MAIL varchar(100)
 )ENGINE=INNODB;
 
-CREATE TABLE CDII (
+CREATE TABLE CDI (
 	NUM_SECU varchar(14),
-	duree_min integer,
-	periode_scolaire integer,
-	nbr_semaine_NT integer,
-	num_semaine_NT i=varchar(50),
+	volume_hebdo integer,
 	FOREIGN KEY (NUM_SECU) REFERENCES SALARIE(NUM_SECU) ON DELETE CASCADE
     )ENGINE=INNODB;
 
 
+CREATE TABLE role(
+	num_secutire varchar(14),
+	mot_de_passe varchar(300),
+	role varchar(30)
+	FOREIGN KEY (num_secutire) REFERENCES SALARIE(NUM_SECU) ON DELETE CASCADE
+    )ENGINE=INNODB;

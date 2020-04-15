@@ -6,7 +6,7 @@
 	<link rel="icon" href="http://www.fol49.org/laligue49/wp-content/uploads/2016/05/icone-ligue.png" sizes="32x32" />
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-	<link rel="stylesheet" type="text/css" href="./fol49.css">
+	<link rel="stylesheet" type="text/css" href="./CSS/fol49.css">
 	<title>Je me connecte</title>
 	
 </head>
@@ -34,7 +34,9 @@
                     </div>
                     <input type="password" name="password" class="form-control" placeholder="mot de passe" required="required">
                 </div>
-
+                 <div class="form-group">
+                    <a href="./renseignement.php">pas inscrit? je le fais !</a>
+                </div>
                 <div class="form-group">
                     <input type="submit" name="btn" value="Je me connecte" class="btn btn-outline-danger float-right login_btn">
                 </div>
@@ -59,8 +61,39 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
 }
 
-$mail = $_POST["email"];
-$password=$_POST["password"];
+$mail = isset($_POST["email"]) ? $_POST["email"] : "" ;
+$password=isset($_POST["password"]) ? $_POST["password"] : "" ;
 
+$recup_secu ="SELECT num_secu FROM SALARIE WHERE mail=\"$mail\"";
+$stt=$pdo->query($recup_secu);
+   
+    while($donne=$stt->fetch(PDO::FETCH_ASSOC))
+    {
+        $secu=$donne["num_secu"];
+    }
+
+$recup_mdp ="SELECT mot_de_passe FROM role WHERE num_securite=12";
+$stt=$pdo->query($recup_mdp);
+   
+    while($donne=$stt->fetch(PDO::FETCH_ASSOC))
+    {
+        
+        $mdp=$donne["mot_de_passe"];
+    }
+
+    if(password_verify ($password,$mdp)){
+        $recup_mdp ="SELECT nom,prenom FROM SALARIE WHERE num_secu=12";
+        $stt=$pdo->query($recup_mdp);
+   
+         while($donne=$stt->fetch(PDO::FETCH_ASSOC))
+         {
+            session_start();
+            
+            $_SESSION['nom']=$donne["nom"];
+            $_SESSION['prenom']=$donne["prenom"];
+            $_SESSION['connected']=true;
+            header("Location: ./espace_prive.php?logged=1");
+         }
+    }
 
 ?>

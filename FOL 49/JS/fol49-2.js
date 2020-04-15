@@ -101,7 +101,7 @@ function contrat() {
 		for (var i = 0; i < semaine.length; i++) {
 			var td = document.createElement("td");
 			td.style="border-left : 2px solid black";
-			td.innerHTML="<input type=\"number\" name=\""+semaine[i]+"\" style=\"border: none;\" size=\"4\">";
+			td.innerHTML="<input type=\"number\" name=\""+semaine[i]+"_vac"+"\" style=\"border: none;\" size=\"4\">";
 			tr2.appendChild(td); 
 		}
 		

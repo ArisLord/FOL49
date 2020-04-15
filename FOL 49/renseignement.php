@@ -6,14 +6,14 @@
 	<link rel="icon" href="http://www.fol49.org/laligue49/wp-content/uploads/2016/05/icone-ligue.png" sizes="32x32" />
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-	<link rel="stylesheet" type="text/css" href="./fol49.css">
+	<link rel="stylesheet" type="text/css" href="./CSS/fol49.css">
 	<title>Renseignement Salarié</title>
 	
 </head>
 <body>
-
-<div class="container" style="margin-top:30px">
-<div class="col-md-10 col-md-offset-1">
+<?php include 'header.php'; ?>
+<div class="container container1" style="margin-top:30px">
+    <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default">
   <div class="panel-heading"><h3 class="panel-title"><strong>Renseignement Salarié.e </strong></h3>
   </div>
@@ -150,7 +150,7 @@
 </div>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./fol49.js"></script>
+<script src="./JS/fol49.js"></script>
 
 
 </body>

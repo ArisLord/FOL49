@@ -40,7 +40,7 @@
             $pdo->commit();
 
             if ($prenom_enfant==[]) {
-                header("Location: ./gestioncontrat.php");
+                header("Location: ./creation_mot_de_passe.php?secu=$num_secu");
             }
     }
     catch(PDOException $e) {
@@ -61,7 +61,7 @@
                 $pdo->rollback();
             }
             $pdo->commit();
-            header("Location: ./gestioncontrat.php");
+            header("Location: ./creation_mot_de_passe.php?secu=$num_secu");
         }
         catch(PDOException $e) {
             echo $e->getMessage();     

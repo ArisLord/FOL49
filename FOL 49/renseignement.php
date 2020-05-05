@@ -19,7 +19,10 @@
   </div>
   
   <div class="panel-body">
-   <form action="./traitement.php" method="POST">
+   <form id="form-salarie" action="./traitement.php" method="POST">
+        <div id="div-alert" class="alert alert-danger ">
+               
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <div class="form-group">
@@ -135,7 +138,7 @@
              <div id="enfant" class="row">
               
             </div>                       
-            <input type="submit" name="submit" value="Suivant" class="btn btn-success" />
+            <input type="submit" name="submit" id="submit" value="Suivant" class="btn btn-success" />
   
              <hr style="margin-top:10px;margin-bottom:10px;" >
   
@@ -151,6 +154,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./JS/fol49.js"></script>
+<script src="./JS/validation_fornulaire.js"></script>
 
 
 </body>

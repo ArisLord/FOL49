@@ -7,7 +7,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 	<link rel="stylesheet" type="text/css" href="./CSS/fol49.css">
-	<title>mot de passe</title>
+	<title>Je me connecte</title>
 	
 </head>
 <body>
@@ -16,54 +16,29 @@
     <div class="card card-login mx-auto text-center bg-dark">
         <div class="card-header mx-auto bg-dark">
             <span> <img src="http://www.fol49.org/laligue49/wp-content/uploads/2016/09/logo-fol49.png" class="w-75" alt="Logo"> </span><br/>
-                        <span class="logo_title mt-5"> Créez votre mot de passe! </span>
+                        <span class="logo_title mt-5"> Veuillez-vous connecter ! </span>
 
-        </div>
-
-        <?php
-
-            if (isset($_GET["err"]) and $_GET["err"]==101){
-
-               echo " <div class=\"alert alert-danger \">";
-               echo "<strong>Oups !</strong> vous n'êtes pas autorisé.e à créer un mot de passe  ";
-               echo "</div>";
-           }
-           elseif (isset($_GET["err"]) and $_GET["err"]==102){
-
-               echo " <div class=\"alert alert-danger \">";
-               echo "<strong>Oups !</strong> les mots de passe ne correspondent pas";
-               echo "</div>";
-           }
-        ?>
-
-        <div>
-            
-            
         </div>
         <div class="card-body">
-            <form action="./password_register.php" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                     </div>
                     <input type="text" name="email" class="form-control" placeholder="e-mail" required="required">
                 </div>
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" name="password-1" class="form-control" placeholder="nouveau mot de passe" required="required">
-                </div>
 
                 <div class="input-group form-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                     </div>
-                    <input type="password" name="password" class="form-control" placeholder=" confirmez  votre mot de passe" required="required">
+                    <input type="password" name="password" class="form-control" placeholder="mot de passe" required="required">
                 </div>
-
+                 <div class="form-group">
+                    <a href="./creation_mot_de_passe.php">créez votre mot de passe</a>
+                </div>
                 <div class="form-group">
-                    <input type="submit" name="btn" value="Enregistrez" class="btn btn-outline-danger float-right login_btn">
+                    <input type="submit" name="btn" value="Je me connecte" class="btn btn-outline-danger float-right login_btn">
                 </div>
 
             </form>
@@ -75,3 +50,48 @@
 
 </body>
 </html>
+
+<!--Gestion connexion-->
+<?php
+include 'connexpdo.inc.php';
+
+try {
+    $pdo = connexpdo("fol-49_postgres");
+} catch (PDOException $e) {
+    echo 'Connexion échouée : ' . $e->getMessage();
+}
+
+$mail = isset($_POST["email"]) ? $_POST["email"] : "" ;
+$password=isset($_POST["password"]) ? $_POST["password"] : "" ;
+
+$recup_secu ="SELECT S.mot_de_passe as mdp FROM SALARIE S where S.mail = '$mail'";
+try {
+    $stt=$pdo->query($recup_secu);
+   }
+catch(PDOException $e) {
+    echo $e->getMessage();     
+                
+} 
+  
+    while($donne=$stt->fetch(PDO::FETCH_ASSOC))
+    {
+        $mdp = $donne["mdp"];
+    }
+
+    if(password_verify ($password,$mdp)){
+        $info ="SELECT S.nom,S.prenom,S.num_secu FROM SALARIE S WHERE S.mail='$mail'";
+        $stt=$pdo->query($info);
+   
+         while($donne=$stt->fetch(PDO::FETCH_ASSOC))
+         {
+            session_start();
+            
+            $_SESSION['nom']=$donne["nom"];
+            $_SESSION['prenom']=$donne["prenom"];
+            $_SESSION['num_secu']=$donne["num_secu"];
+            $_SESSION['connected']=true;
+            header("Location: ./espace_prive.php?logged=1");
+         }
+    }
+
+?>

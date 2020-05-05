@@ -1,0 +1,31 @@
+.calendar {
+	border :2px solid black;
+	margin-left: 10%;
+	margin-bottom: 10%;
+}
+
+.mois{
+	background: #337ab7;
+	border :2px solid black;
+	text-align: center;
+}
+
+.case {
+
+	border : 2px solid black;
+}
+.jour{
+	border : 2px solid black;
+}
+
+.notADay{
+	background-color: black; 
+}
+
+.conge{
+
+	background-color: red; 
+}
+.jour_normal {
+	background-color: gray;	
+}

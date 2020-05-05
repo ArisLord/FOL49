@@ -51,7 +51,7 @@ function contrat() {
 		table.id="enfant_style";
 		var tr = document.createElement("tr");
 		tr.style="background-color:gray;"
-		var semaine = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+		var semaine = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi"];
 		for (var i = 0; i < semaine.length; i++) {
 			var td = document.createElement("td");
 			td.style="border-left : 2px solid black";
@@ -90,7 +90,7 @@ function contrat() {
 		table.id="enfant_style";
 		var tr = document.createElement("tr");
 		tr.style="background-color:gray;"
-		var semaine = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+		var semaine = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi"];
 		for (var i = 0; i < semaine.length; i++) {
 			var td = document.createElement("td");
 			td.style="border-left : 2px solid black";
@@ -101,7 +101,7 @@ function contrat() {
 		for (var i = 0; i < semaine.length; i++) {
 			var td = document.createElement("td");
 			td.style="border-left : 2px solid black";
-			td.innerHTML="<input type=\"number\" name=\""+semaine[i]+"_vac"+"\" style=\"border: none;\" size=\"4\">";
+			td.innerHTML="<input type=\"number\" name=\""+semaine[i]+"\" style=\"border: none;\" size=\"4\">";
 			tr2.appendChild(td); 
 		}
 		
@@ -270,7 +270,7 @@ function type_CDD(){
 		var remp1 = document.createElement("div");
 		remp1.id="remp1";
 		remp1.style="padding: 1% 5% 0% 5%";
-		var code ="<div title=\"numéro de sécurité sociale\">Personne remplacée : <input maxlength=\"14\" require=\"required\" type=\"text\" name=\"pers_remp\" style=\"border-width: 0px 0px 1px; border-style: solid; border-color: white white black; border-image: initial;\"></div>"
+		var code ="<div>Personne remplacée : <input require=\"required\" type=\"text\" name=\"pers_remp\" style=\"border-width: 0px 0px 1px; border-style: solid; border-color: white white black; border-image: initial;\"></div>"
 			code =code+ "<label>Du :</label>";
 			code =code+"<input require=\"required\" type=\"date\" size=\"2\" name=\"debut\" style=\"border-width: 0px 0px 1px; border-style: solid; border-color: white white black; border-image: initial;\">";
 			code=code+"<label>Au :</label>";

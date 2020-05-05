@@ -19,16 +19,16 @@
 
 
 		
-		   <form action="./traitement_contrat.php" method="POST">
+		   <form action="<?php echo "./traitement_contrat.php?secu=".$_GET["secu"] ?>" method="POST">
 			        <div class="row">
 			            <div class="col-xs-12 col-sm-2 col-md-2">
 			                <div class="form-group">
-			                    <input type="text" name="Nom" id="Nom" class="form-control" placeholder="Nom" tabindex="1" required="required">
+			                    <input type="text" name="Nom" id="Nom" class="form-control" placeholder="Nom" tabindex="1" required="required" value="<?php echo $_GET["nom"] ?>">
 			                    </div>
 			                </div>
 			                <div class="col-xs-12 col-sm-2 col-md-2">
 			                    <div class="form-group">
-			                        <input type="text" name="Prenom" id="Prenom" class="form-control" placeholder="Prenom" tabindex="1" required="required">
+			                        <input type="text" name="Prenom" id="Prenom" class="form-control" placeholder="Prenom" tabindex="1" required="required" value="<?php echo $_GET["prenom"] ?>">
 			                    </div>
 			                </div>
 			        </div>
